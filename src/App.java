@@ -51,16 +51,19 @@ public class App {
                 binaryTree.printPostorder();
             } else if (option == 8) {
                 continueRunning = false;
+                scanner.close();
             } else if (!binaryTreeCreated) {
                 System.out.println("Please create a binary tree using option 1 first");
 
             } else {
                 System.out.println("Invalid option exiting program");
                 continueRunning = false;
+                scanner.close();
             }
         } catch (Exception e) {
             System.out.println("Invalid option exiting program");
             continueRunning = false;
+            scanner.close();
         }
         } while (continueRunning);
     }
