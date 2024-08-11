@@ -1,7 +1,11 @@
-/*refrences https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+/*refrences 
+https://www.geeksforgeeks.org/java-program-to-construct-a-binary-search-tree/
+https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
 https://www.geeksforgeeks.org/preorder-traversal-of-binary-tree/
 https://www.geeksforgeeks.org/postorder-traversal-of-binary-tree/
-*/ 
+*/
+
+import java.util.Arrays;
 
 public class BinarySearchTree {
 
@@ -20,20 +24,41 @@ public class BinarySearchTree {
 
     Node root;
 
+    public BinarySearchTree() {
+        root = null;
+    }
+
+    // public method to create a binary search tree from an array
     // The binary search tree will be created from the given array
     public void CreateBinarySearchTreeFromArray(int[] arr) {
+        Arrays.sort(arr);
+        root = sortedArrayToBST(arr, 0, arr.length - 1);
 
-        root = null;
-        for (int num : arr) {
-            insert(num);
-        }
+        // root = null;
+        // for (int num : arr) {
+        // insert(num);
+        // }
     }
+
+    private Node sortedArrayToBST(int[] arr, int start, int end) {
+        if (start > end) {
+            return null;
+        }
+        int mid = (start + end) / 2;
+        Node root = new Node(arr[mid]);
+        root.left = sortedArrayToBST(arr, start, mid - 1);
+        root.right = sortedArrayToBST(arr, mid + 1, end);
+        return root;
+    }
+
     // public method to insert a node into the binary search tree
     public void insert(int key) {
         root = insertNodeTraversal(root, key);
     }
 
-    // private method to insert a node into the binary search tree with the given key encapsulated in the class. Insert Node relies on the insertNodeTraversal method internally
+    // private method to insert a node into the binary search tree with the given
+    // key encapsulated in the class. Insert Node relies on the insertNodeTraversal
+    // method internally
     private Node insertNodeTraversal(Node root, int key) {
         // if there is not a root node, create one
         if (root == null) {
@@ -41,23 +66,33 @@ public class BinarySearchTree {
             return root;
         }
 
-        // if the key is less than the current node's key, go to the left from the current node
+        // if the key is less than the current node's key, go to the left from the
+        // current node
         if (key < root.key)
             root.left = insertNodeTraversal(root.left, key);
-        // if the key is greater than the current node's key, go to the right from the current node    
+        // if the key is greater than the current node's key, go to the right from the
+        // current node
         else if (key > root.key)
             root.right = insertNodeTraversal(root.right, key);
 
         return root;
     }
 
+    public void rootNode() {
+        System.out.println(root.key);
+    }
+
     public void printInorder() {
         printNodeInorderTraversal(root);
     }
-    // private method to print the binary search tree in order traversal with the root node encapsulated in the class. Print Inorder relies on the printNodeInorderTraversal method internally
+
+    // private method to print the binary search tree in order traversal with the
+    // root node encapsulated in the class. Print Inorder relies on the
+    // printNodeInorderTraversal method internally
     private void printNodeInorderTraversal(Node root) {
         if (root != null) {
-            // move as far left as possible until the next node is null and then start printing and moving right
+            // move as far left as possible until the next node is null and then start
+            // printing and moving right
             printNodeInorderTraversal(root.left);
             System.out.println(root.key);
             printNodeInorderTraversal(root.right);
@@ -69,11 +104,13 @@ public class BinarySearchTree {
     }
 
     private void printNodePreorderTraversal(Node root) {
-        if (root != null) {
-            System.out.println(root.key);
-            printNodePreorderTraversal(root.left);
-            printNodePreorderTraversal(root.right);
+        if (root == null) {
+            return;
         }
+
+        System.out.println(root.key);
+        printNodePreorderTraversal(root.left);
+        printNodePreorderTraversal(root.right);
     }
 
     public void printPostorder() {
@@ -103,34 +140,35 @@ public class BinarySearchTree {
         }
         if (root.key == key)
             return true;
-    
+
         // Key is greater than root's key
         if (root.key > key)
             return searchKeyNodeTraversal(root.left, key);
-    
+
         // Key is less than root's key
         return searchKeyNodeTraversal(root.right, key);
 
-       
     }
-       
-    
+
     public void deleteKey(int key) {
-        
+
         root = deleteKeyNodeTraversal(root, key);
     }
 
-    // private method to delete a node from the binary search tree with the given key encapsulated in the class. Delete Key relies on the deleteKeyNodeTraversal method internally
+    // private method to delete a node from the binary search tree with the given
+    // key encapsulated in the class. Delete Key relies on the
+    // deleteKeyNodeTraversal method internally
     private Node deleteKeyNodeTraversal(Node root, int key) {
-        
-        // if the tree is empty or the key is not found in the tree return the root node and print that the key was not found
+
+        // if the tree is empty or the key is not found in the tree return the root node
+        // and print that the key was not found
         boolean found = searchKeyNodeTraversal(root, key);
         if (!found) {
             System.out.println("Key not found");
             return root;
         }
 
-        //if (root == null) return root;
+        // if (root == null) return root;
 
         if (key < root.key)
             root.left = deleteKeyNodeTraversal(root.left, key);
@@ -140,24 +178,23 @@ public class BinarySearchTree {
             if (root.left == null) {
                 System.out.println("Key " + root.key + " was deleted from the BST.");
                 return root.right;
-            }
-            else if (root.right == null) {
+            } else if (root.right == null) {
                 System.out.println("Key " + root.key + " was deleted from the BST.");
                 return root.left;
             }
-    
+
             root.key = minValue(root.right);
-    
+
             System.out.println("Key " + root.key + " was deleted from the BST.");
             root.right = deleteKeyNodeTraversal(root.right, root.key);
         }
-    
+
         return root;
     }
 
-    
     int minValue(Node root) {
-        // move as far left as possible until the next node is null that should be the minimum value.
+        // move as far left as possible until the next node is null that should be the
+        // minimum value.
         int minv = root.key;
         while (root.left != null) {
             minv = root.left.key;

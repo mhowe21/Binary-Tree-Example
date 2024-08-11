@@ -20,7 +20,8 @@ public class App {
             System.out.println("5: Print the binary tree in order");
             System.out.println("6: Print the binary tree pre-order");
             System.out.println("7: Print the binary tree post-order");
-            System.out.println("8: Exit");
+            System.out.println("8: print root node");
+            System.out.println("9: Exit");
             Scanner scanner = new Scanner(System.in);
 
             try {
@@ -30,7 +31,7 @@ public class App {
                     // create a binary tree with the given array below as an example. The method
                     // will take any array of integers and convert it to a binary search tree
                     // the array below is just an example
-                    int[] binaryTreeArray = { 1, 2, 3, 4, 5, 6, 7 };
+                    int[] binaryTreeArray = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
                     binaryTree.CreateBinarySearchTreeFromArray(binaryTreeArray);
                     System.out.println("Binary tree created successfully");
                     // set the boolean to true to indicate that the binary tree has been created as
@@ -65,8 +66,9 @@ public class App {
                     binaryTree.printPostorder();
                 } else if (option == 8) {
                     // break the loop and exit the program
-                    continueRunning = false;
-                    scanner.close();
+                    // continueRunning = false;
+                    // scanner.close();
+                    binaryTree.rootNode();
                 } else if (!binaryTreeCreated) {
                     // if the binary tree has not been created yet prompt the user to create a
                     // binary tree using option 1
