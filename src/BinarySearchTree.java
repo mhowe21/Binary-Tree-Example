@@ -31,6 +31,8 @@ public class BinarySearchTree {
     // public method to create a binary search tree from an array
     // The binary search tree will be created from the given array
     public void CreateBinarySearchTreeFromArray(int[] arr) {
+        // sort the array we could use a sorting algorithm for this, but we will just
+        // use the bilt in option.
         Arrays.sort(arr);
         root = sortedArrayToTree(arr, 0, arr.length - 1);
 
@@ -44,6 +46,7 @@ public class BinarySearchTree {
         if (start > end) {
             return null;
         }
+        // find the middle of the array and set it as the root
         int mid = (start + end) / 2;
         Node root = new Node(arr[mid]);
         root.left = sortedArrayToTree(arr, start, mid - 1);
