@@ -1,18 +1,33 @@
-## Getting Started
+# Balanced Binary Search Tree in Java
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This is a simple Java program that creates a balanced binary search tree (BST) from an array. The program provides the following functionalities:
 
-## Folder Structure
+1. **Add a new node** to the BST
+2. **Delete a node** from the BST
+3. **Search** for a node in the BST
+4. **Output the BST in order**
+5. **Output the BST in pre-order**
+6. **Output the BST in post-order**
+7. **Output the root node**
+8. **Exit the program**
 
-The workspace contains two folders by default, where:
+## Compilation
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+If compiling from source to run be sure to combile the Binary search tree class first using javac.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Otherwise the compiled code can be found in the bin folder.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Usage
 
-## Dependency Management
+Run the program and follow the prompts in the console to use the various functionalities.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## References
+
+This program is based on the following resources:
+
+- Java Program to Construct a Binary Search Tree
+- Binary Search Tree: Search and Insertion
+- Preorder Traversal of Binary Tree
+- Postorder Traversal of Binary Tree
+
+Please refer to these resources for more information on the underlying algorithms and data structures.
