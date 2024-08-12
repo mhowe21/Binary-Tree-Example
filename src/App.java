@@ -12,7 +12,7 @@ public class App {
 
         do {
             // display a menue of options
-            System.out.println("Please select an option below for the binary tree implementation:");
+            System.out.println("\nPlease select an option below for the binary tree implementation:");
             System.out.println("1: Create a new binary tree");
             System.out.println("2: Add a new node to the binary tree");
             System.out.println("3: Delete a node from the binary tree");
@@ -21,7 +21,7 @@ public class App {
             System.out.println("6: Print the binary tree pre-order");
             System.out.println("7: Print the binary tree post-order");
             System.out.println("8: print root node");
-            System.out.println("9: Exit");
+            System.out.println("9: Exit\n");
             Scanner scanner = new Scanner(System.in);
 
             try {
@@ -31,7 +31,7 @@ public class App {
                     // create a binary tree with the given array below as an example. The method
                     // will take any array of integers and convert it to a binary search tree
                     // the array below is just an example
-                    int[] binaryTreeArray = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+                    int[] binaryTreeArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
                     binaryTree.CreateBinarySearchTreeFromArray(binaryTreeArray);
                     System.out.println("Binary tree created successfully");
                     // set the boolean to true to indicate that the binary tree has been created as
@@ -64,11 +64,15 @@ public class App {
                 } else if (option == 7 && binaryTreeCreated) {
                     // print the binary search tree post-order
                     binaryTree.printPostorder();
-                } else if (option == 8) {
+                } else if (option == 8 && binaryTreeCreated) {
                     // break the loop and exit the program
                     // continueRunning = false;
                     // scanner.close();
                     binaryTree.rootNode();
+                } else if (option == 9) {
+                    // break the loop and exit the program
+                    continueRunning = false;
+                    scanner.close();
                 } else if (!binaryTreeCreated) {
                     // if the binary tree has not been created yet prompt the user to create a
                     // binary tree using option 1

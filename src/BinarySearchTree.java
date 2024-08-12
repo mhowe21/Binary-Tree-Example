@@ -32,7 +32,7 @@ public class BinarySearchTree {
     // The binary search tree will be created from the given array
     public void CreateBinarySearchTreeFromArray(int[] arr) {
         Arrays.sort(arr);
-        root = sortedArrayToBST(arr, 0, arr.length - 1);
+        root = sortedArrayToTree(arr, 0, arr.length - 1);
 
         // root = null;
         // for (int num : arr) {
@@ -40,14 +40,14 @@ public class BinarySearchTree {
         // }
     }
 
-    private Node sortedArrayToBST(int[] arr, int start, int end) {
+    private Node sortedArrayToTree(int[] arr, int start, int end) {
         if (start > end) {
             return null;
         }
         int mid = (start + end) / 2;
         Node root = new Node(arr[mid]);
-        root.left = sortedArrayToBST(arr, start, mid - 1);
-        root.right = sortedArrayToBST(arr, mid + 1, end);
+        root.left = sortedArrayToTree(arr, start, mid - 1);
+        root.right = sortedArrayToTree(arr, mid + 1, end);
         return root;
     }
 
@@ -79,7 +79,7 @@ public class BinarySearchTree {
     }
 
     public void rootNode() {
-        System.out.println(root.key);
+        System.out.println("\n" + root.key);
     }
 
     public void printInorder() {
@@ -94,7 +94,7 @@ public class BinarySearchTree {
             // move as far left as possible until the next node is null and then start
             // printing and moving right
             printNodeInorderTraversal(root.left);
-            System.out.println(root.key);
+            System.out.println("\n" + root.key);
             printNodeInorderTraversal(root.right);
         }
     }
@@ -108,7 +108,7 @@ public class BinarySearchTree {
             return;
         }
 
-        System.out.println(root.key);
+        System.out.println("\n" + root.key);
         printNodePreorderTraversal(root.left);
         printNodePreorderTraversal(root.right);
     }
@@ -121,16 +121,16 @@ public class BinarySearchTree {
         if (root != null) {
             printNodePostorderTraversal(root.left);
             printNodePostorderTraversal(root.right);
-            System.out.println(root.key);
+            System.out.println("\n" + root.key);
         }
     }
 
     public void searchKey(int key) {
         boolean found = searchKeyNodeTraversal(root, key);
         if (found) {
-            System.out.println("Key found in the tree!");
+            System.out.println("\nKey found in the tree!");
         } else {
-            System.out.println("Key not found in the tree!");
+            System.out.println("\nKey not found in the tree!");
         }
     }
 
@@ -164,7 +164,7 @@ public class BinarySearchTree {
         // and print that the key was not found
         boolean found = searchKeyNodeTraversal(root, key);
         if (!found) {
-            System.out.println("Key not found");
+            System.out.println("\nKey not found");
             return root;
         }
 
@@ -176,16 +176,16 @@ public class BinarySearchTree {
             root.right = deleteKeyNodeTraversal(root.right, key);
         else {
             if (root.left == null) {
-                System.out.println("Key " + root.key + " was deleted from the BST.");
+                System.out.println("\nKey " + root.key + " was deleted from the BST.");
                 return root.right;
             } else if (root.right == null) {
-                System.out.println("Key " + root.key + " was deleted from the BST.");
+                System.out.println("\nKey " + root.key + " was deleted from the BST.");
                 return root.left;
             }
 
             root.key = minValue(root.right);
 
-            System.out.println("Key " + root.key + " was deleted from the BST.");
+            System.out.println("\nKey " + root.key + " was deleted from the BST.");
             root.right = deleteKeyNodeTraversal(root.right, root.key);
         }
 
