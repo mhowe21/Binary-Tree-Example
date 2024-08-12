@@ -48,6 +48,8 @@ public class BinarySearchTree {
         }
         // find the middle of the array and set it as the root
         int mid = (start + end) / 2;
+
+        // create a new node with the middle of the array is either or less than.
         Node root = new Node(arr[mid]);
         root.left = sortedArrayToTree(arr, start, mid - 1);
         root.right = sortedArrayToTree(arr, mid + 1, end);
