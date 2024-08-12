@@ -19,7 +19,7 @@ public class App {
             System.out.println("4: Print the binary tree in order");
             System.out.println("5: Print the binary tree pre-order");
             System.out.println("6: Print the binary tree post-order");
-            System.out.println("7: print root node");
+            System.out.println("7: exit");
 
             Scanner scanner = new Scanner(System.in);
 
