@@ -16,12 +16,11 @@ public class App {
             System.out.println("1: Create a new binary tree");
             System.out.println("2: Add a new node to the binary tree");
             System.out.println("3: Delete a node from the binary tree");
-            System.out.println("4: Search for a node in the binary tree");
-            System.out.println("5: Print the binary tree in order");
-            System.out.println("6: Print the binary tree pre-order");
-            System.out.println("7: Print the binary tree post-order");
-            System.out.println("8: print root node");
-            System.out.println("9: Exit\n");
+            System.out.println("4: Print the binary tree in order");
+            System.out.println("5: Print the binary tree pre-order");
+            System.out.println("6: Print the binary tree post-order");
+            System.out.println("7: print root node");
+
             Scanner scanner = new Scanner(System.in);
 
             try {
@@ -31,7 +30,7 @@ public class App {
                     // create a binary tree with the given array below as an example. The method
                     // will take any array of integers and convert it to a binary search tree
                     // the array below is just an example
-                    int[] binaryTreeArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+                    int[] binaryTreeArray = { 1, 2, 3, 4, 5, 6, 7 };
                     binaryTree.CreateBinarySearchTreeFromArray(binaryTreeArray);
                     System.out.println("Binary tree created successfully");
                     // set the boolean to true to indicate that the binary tree has been created as
@@ -50,26 +49,19 @@ public class App {
                     int deleteNode = scanner.nextInt();
                     binaryTree.deleteKey(deleteNode);
                 } else if (option == 4 && binaryTreeCreated) {
-                    // search for a node in the binary search tree and if the node does not exist
-                    // return that the node does not exist
-                    System.out.println("Enter the value of the node to be searched: ");
-                    int searchNode = scanner.nextInt();
-                    binaryTree.searchKey(searchNode);
+                    // print the binary search tree in order
+                    System.out.println("Printing binary tree in order...");
+                    binaryTree.printInorder();
                 } else if (option == 5 && binaryTreeCreated) {
                     // print the binary search tree in order
-                    binaryTree.printInorder();
+                    System.out.println("Printing binary tree in pre-order...");
+                    binaryTree.printPreorder(); // print the binary tree in pre-order();
                 } else if (option == 6 && binaryTreeCreated) {
-                    // print the binary search tree pre-order
-                    binaryTree.printPreorder();
-                } else if (option == 7 && binaryTreeCreated) {
-                    // print the binary search tree post-order
-                    binaryTree.printPostorder();
-                } else if (option == 8 && binaryTreeCreated) {
-                    // break the loop and exit the program
-                    // continueRunning = false;
-                    // scanner.close();
-                    binaryTree.rootNode();
-                } else if (option == 9) {
+                    // print the binary search tree in post-order
+                    System.out.println("Printing bindary tree in post-order...");
+                    binaryTree.printPostorder(); // print the binary search tree post-order();
+
+                } else if (option == 7) {
                     // break the loop and exit the program
                     continueRunning = false;
                     scanner.close();

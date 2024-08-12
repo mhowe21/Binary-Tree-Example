@@ -35,11 +35,6 @@ public class BinarySearchTree {
         // use the bilt in option.
         Arrays.sort(arr);
         root = sortedArrayToTree(arr, 0, arr.length - 1);
-
-        // root = null;
-        // for (int num : arr) {
-        // insert(num);
-        // }
     }
 
     private Node sortedArrayToTree(int[] arr, int start, int end) {
@@ -83,6 +78,8 @@ public class BinarySearchTree {
         return root;
     }
 
+    // public method to print the root node it is not needed for this example. But
+    // can be utilized if using the class later for addtional functionality
     public void rootNode() {
         System.out.println("\n" + root.key);
     }
@@ -130,6 +127,10 @@ public class BinarySearchTree {
         }
     }
 
+    // public method to search for a key in the binary search tree and print out the
+    // result.
+    // This is not used for this example assignment however, it can be utilized if
+    // needed in the future.
     public void searchKey(int key) {
         boolean found = searchKeyNodeTraversal(root, key);
         if (found) {
@@ -139,6 +140,15 @@ public class BinarySearchTree {
         }
     }
 
+    // private method to search for a key in the binary search tree with the given
+    // key.
+    // searching is not utilized for this example assignment however, this method is
+    // used in the deleteKey method to make sure the key is present.
+    // We do not need it for the delete option to be effective but it does allow us
+    // to catch if the key is not present.
+    // do note however that this makes the node delete slighlyly less efficent as it
+    // does run through the entire tree first to see if the key is present prior to
+    // running the delete.
     private boolean searchKeyNodeTraversal(Node root, int key) {
         if (root == null) {
             return false;
