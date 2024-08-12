@@ -78,12 +78,6 @@ public class BinarySearchTree {
         return root;
     }
 
-    // public method to print the root node it is not needed for this example. But
-    // can be utilized if using the class later for addtional functionality
-    public void rootNode() {
-        System.out.println("\n" + root.key);
-    }
-
     public void printInorder() {
         printNodeInorderTraversal(root);
     }
@@ -109,7 +103,7 @@ public class BinarySearchTree {
         if (root == null) {
             return;
         }
-
+        // start at node and move left, then right
         System.out.println("\n" + root.key);
         printNodePreorderTraversal(root.left);
         printNodePreorderTraversal(root.right);
@@ -131,39 +125,6 @@ public class BinarySearchTree {
     // result.
     // This is not used for this example assignment however, it can be utilized if
     // needed in the future.
-    public void searchKey(int key) {
-        boolean found = searchKeyNodeTraversal(root, key);
-        if (found) {
-            System.out.println("\nKey found in the tree!");
-        } else {
-            System.out.println("\nKey not found in the tree!");
-        }
-    }
-
-    // private method to search for a key in the binary search tree with the given
-    // key.
-    // searching is not utilized for this example assignment however, this method is
-    // used in the deleteKey method to make sure the key is present.
-    // We do not need it for the delete option to be effective but it does allow us
-    // to catch if the key is not present.
-    // do note however that this makes the node delete slighlyly less efficent as it
-    // does run through the entire tree first to see if the key is present prior to
-    // running the delete.
-    private boolean searchKeyNodeTraversal(Node root, int key) {
-        if (root == null) {
-            return false;
-        }
-        if (root.key == key)
-            return true;
-
-        // Key is greater than root's key
-        if (root.key > key)
-            return searchKeyNodeTraversal(root.left, key);
-
-        // Key is less than root's key
-        return searchKeyNodeTraversal(root.right, key);
-
-    }
 
     public void deleteKey(int key) {
 
@@ -177,13 +138,9 @@ public class BinarySearchTree {
 
         // if the tree is empty or the key is not found in the tree return the root node
         // and print that the key was not found
-        boolean found = searchKeyNodeTraversal(root, key);
-        if (!found) {
-            System.out.println("\nKey not found");
-            return root;
-        }
 
-        // if (root == null) return root;
+        if (root == null)
+            return root;
 
         if (key < root.key)
             root.left = deleteKeyNodeTraversal(root.left, key);
